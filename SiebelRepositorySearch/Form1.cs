@@ -26,7 +26,7 @@ namespace SiebelRepositorySearch
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OdbcConnection conn = new OdbcConnection("DSN=SSD Local Db default instance");
+            OdbcConnection conn = new OdbcConnection("DSN=SSD Local Db default instance;Uid=SADMIN;Pwd=SADMIN");
            // conn.ConnectionString = "Driver={Oracle ODBC Driver};Dbq=SSD Local Db default instance;Uid=SADMIN;Pwd=SADMIN;";
             conn.Open();
             OdbcCommand dbCmd = conn.CreateCommand();
