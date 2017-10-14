@@ -27,7 +27,6 @@ namespace SiebelRepositorySearch
         private void button1_Click(object sender, EventArgs e)
         {
             OdbcConnection conn = new OdbcConnection("DSN=SSD Local Db default instance;Uid=SADMIN;Pwd=SADMIN");
-           // conn.ConnectionString = "Driver={Oracle ODBC Driver};Dbq=SSD Local Db default instance;Uid=SADMIN;Pwd=SADMIN;";
             conn.Open();
             OdbcCommand dbCmd = conn.CreateCommand();
             dbCmd.CommandText = "SELECT * FROM SIEBEL.S_ORG_EXT";
@@ -40,7 +39,9 @@ namespace SiebelRepositorySearch
                 Console.Write(fName + ":");
             }
             Console.WriteLine();
-
+            dbReader.Close();
+            dbCmd.Dispose();
+            conn.Close();
         }
     }
 }
