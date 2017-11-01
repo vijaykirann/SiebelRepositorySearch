@@ -13,7 +13,7 @@ namespace SiebelRepositorySearch
 {
     public partial class Form1 : Form
     {
-
+        OdbcConnection conn;
         public Form1()
         {
             InitializeComponent();
@@ -33,22 +33,23 @@ namespace SiebelRepositorySearch
             var txtDB = Properties.Settings.Default.DBType;
             string connstr = "DSN=" + txtCN + ";Uid=" + txtUN + ";Pwd=" + txtPW + "";
             //OdbcConnection conn = new OdbcConnection("DSN=SSD Local Db default instance;Uid=SADMIN;Pwd=SADMIN");
-            OdbcConnection conn = new OdbcConnection(connstr);
+            conn = new OdbcConnection(connstr);
             conn.Open();
+            AppletSearchSpec();
+            conn.Close();
+        }
+
+        private void AppletSearchSpec()
+        {
             OdbcCommand dbCmd = conn.CreateCommand();
             dbCmd.CommandText = "SELECT * FROM SIEBEL.S_ORG_EXT";
             OdbcDataReader dbReader = dbCmd.ExecuteReader();
-            int fCount = dbReader.FieldCount;
-            Console.Write(":");
-            for (int i = 0; i < fCount; i++)
+            while(dbReader.Read())
             {
-                String fName = dbReader.GetName(i);
-                Console.Write(fName + ":");
+                var A = dbReader[0].ToString();
             }
-            Console.WriteLine();
             dbReader.Close();
             dbCmd.Dispose();
-            conn.Close();
         }
 
         private void openSettingsToolStripMenuItem_Click(object sender, EventArgs e)

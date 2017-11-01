@@ -70,5 +70,17 @@ namespace SiebelRepositorySearch.Properties {
                 this["DBType"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RepId {
+            get {
+                return ((string)(this["RepId"]));
+            }
+            set {
+                this["RepId"] = value;
+            }
+        }
     }
 }

@@ -13,23 +13,31 @@ namespace SiebelRepositorySearch
 {
     public partial class SettingsForm : Form
     {
+        bool cansav = false;
         public SettingsForm()
         {
             InitializeComponent();
             txtCN.Text = Properties.Settings.Default.ConnectString;
             txtUN.Text = Properties.Settings.Default.Usr;
             txtPW.Text = Properties.Settings.Default.Pwd;
-            txtDB.Text = Properties.Settings.Default.DBType;
+            txtDB.Text = Properties.Settings.Default.DBType;            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.ConnectString = txtCN.Text;
-            Properties.Settings.Default.Usr = txtUN.Text;
-            Properties.Settings.Default.Pwd = txtPW.Text;
-            Properties.Settings.Default.DBType = txtDB.Text;
-            Properties.Settings.Default.Save();
-            this.Close();
+            if (cansav == true)
+            {
+                Properties.Settings.Default.ConnectString = txtCN.Text;
+                Properties.Settings.Default.Usr = txtUN.Text;
+                Properties.Settings.Default.Pwd = txtPW.Text;
+                Properties.Settings.Default.DBType = txtDB.Text;
+                Properties.Settings.Default.Save();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Test the Connection before Saving.");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -43,7 +51,16 @@ namespace SiebelRepositorySearch
                 string tstconnstr = "DSN=" + tstCN + ";Uid=" + tstUN + ";Pwd=" + tstPW + "";
                 OdbcConnection tstconn = new OdbcConnection(tstconnstr);
                 tstconn.Open();
+                OdbcCommand tstdbCmd = tstconn.CreateCommand();
+                tstdbCmd.CommandText = "SELECT ROW_ID FROM SIEBEL.S_REPOSITORY WHERE INACTIVE_FLG is null";
+                OdbcDataReader tstdbReader = tstdbCmd.ExecuteReader();
+                while(tstdbReader.Read())
+                {
+                    Properties.Settings.Default.RepId = tstdbReader[0].ToString();
+                    Properties.Settings.Default.Save();
+                }
                 MessageBox.Show("Connextion Sucessful.Goahead and Save it !!");
+                cansav = true;
             }
             catch
             {
