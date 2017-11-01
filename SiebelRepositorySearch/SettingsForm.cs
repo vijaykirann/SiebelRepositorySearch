@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Odbc;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,25 @@ namespace SiebelRepositorySearch
             Properties.Settings.Default.DBType = txtDB.Text;
             Properties.Settings.Default.Save();
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var tstCN = txtCN.Text;
+                var tstUN = txtUN.Text;
+                var tstPW = txtPW.Text;
+                var tstDB = txtDB.Text;
+                string tstconnstr = "DSN=" + tstCN + ";Uid=" + tstUN + ";Pwd=" + tstPW + "";
+                OdbcConnection tstconn = new OdbcConnection(tstconnstr);
+                tstconn.Open();
+                MessageBox.Show("Connextion Sucessful.Goahead and Save it !!");
+            }
+            catch
+            {
+                MessageBox.Show("Invalid Connextion");
+            }
         }
     }
 }
