@@ -17,6 +17,7 @@ namespace SiebelRepositorySearch
         public Form1()
         {
             InitializeComponent();
+            label1.Text = Properties.Settings.Default.ConnectString;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -26,7 +27,13 @@ namespace SiebelRepositorySearch
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OdbcConnection conn = new OdbcConnection("DSN=SSD Local Db default instance;Uid=SADMIN;Pwd=SADMIN");
+            var txtCN = Properties.Settings.Default.ConnectString;
+            var txtUN = Properties.Settings.Default.Usr;
+            var txtPW = Properties.Settings.Default.Pwd;
+            var txtDB = Properties.Settings.Default.DBType;
+            string connstr = "DSN=" + txtCN + ";Uid=" + txtUN + ";Pwd=" + txtPW + "";
+            //OdbcConnection conn = new OdbcConnection("DSN=SSD Local Db default instance;Uid=SADMIN;Pwd=SADMIN");
+            OdbcConnection conn = new OdbcConnection(connstr);
             conn.Open();
             OdbcCommand dbCmd = conn.CreateCommand();
             dbCmd.CommandText = "SELECT * FROM SIEBEL.S_ORG_EXT";
@@ -42,6 +49,12 @@ namespace SiebelRepositorySearch
             dbReader.Close();
             dbCmd.Dispose();
             conn.Close();
+        }
+
+        private void openSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingsForm SF = new SettingsForm();
+            SF.ShowDialog();
         }
     }
 }
