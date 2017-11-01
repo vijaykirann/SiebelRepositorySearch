@@ -31,22 +31,34 @@ namespace SiebelRepositorySearch
             var txtUN = Properties.Settings.Default.Usr;
             var txtPW = Properties.Settings.Default.Pwd;
             var txtDB = Properties.Settings.Default.DBType;
+            var strRepId = Properties.Settings.Default.RepId;
+            string strSrch = txtSearch.Text;
+            string strSrchType = strSearchTyp.SelectedItem.ToString();
+            string Wildsrch = "Wildcard Search";
+            if (strSrchType == Wildsrch)
+            strSrch = "%"+ strSrch + "%";
             string connstr = "DSN=" + txtCN + ";Uid=" + txtUN + ";Pwd=" + txtPW + "";
             //OdbcConnection conn = new OdbcConnection("DSN=SSD Local Db default instance;Uid=SADMIN;Pwd=SADMIN");
             conn = new OdbcConnection(connstr);
             conn.Open();
-            AppletSearchSpec();
+            AppletSearchSpec(strRepId,strSrch);
+//            AppletBS(strRepId, strSrch);
             conn.Close();
         }
 
-        private void AppletSearchSpec()
+        private void AppletBS(string strRepId, string strSrch)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AppletSearchSpec(string strRepId, string strSrch)
         {
             OdbcCommand dbCmd = conn.CreateCommand();
-            dbCmd.CommandText = "SELECT * FROM SIEBEL.S_ORG_EXT";
+            dbCmd.CommandText = "select S_REPOSITORY.NAME as REP_NAME, S_APPLET.NAME as NAME1,S_APPLET.SRCHSPEC as VALUE from siebel.S_APPLET,siebel.S_REPOSITORY where S_APPLET.REPOSITORY_ID = S_REPOSITORY.ROW_ID AND S_REPOSITORY.ROW_ID = '"+ strRepId + "' AND S_APPLET.SRCHSPEC like '"+ strSrch + "'";
             OdbcDataReader dbReader = dbCmd.ExecuteReader();
             while(dbReader.Read())
             {
-                var A = dbReader[0].ToString();
+                var A = dbReader[1].ToString();
             }
             dbReader.Close();
             dbCmd.Dispose();

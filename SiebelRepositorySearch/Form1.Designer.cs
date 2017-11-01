@@ -35,15 +35,17 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.strSearchTyp = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(142, 90);
+            this.button1.Location = new System.Drawing.Point(502, 52);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
@@ -53,15 +55,15 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(120, 64);
+            this.txtSearch.Location = new System.Drawing.Point(117, 34);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(202, 20);
+            this.txtSearch.Size = new System.Drawing.Size(295, 20);
             this.txtSearch.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 67);
+            this.label4.Location = new System.Drawing.Point(23, 37);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 13);
             this.label4.TabIndex = 8;
@@ -72,9 +74,9 @@
             this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeView1.Location = new System.Drawing.Point(0, 119);
+            this.treeView1.Location = new System.Drawing.Point(0, 99);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(372, 167);
+            this.treeView1.Size = new System.Drawing.Size(589, 187);
             this.treeView1.TabIndex = 9;
             // 
             // menuStrip1
@@ -85,7 +87,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(372, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(589, 24);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -103,33 +105,56 @@
             this.settingToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.settingToolStripMenuItem.Text = "Setting";
             // 
+            // openSettingsToolStripMenuItem
+            // 
+            this.openSettingsToolStripMenuItem.Name = "openSettingsToolStripMenuItem";
+            this.openSettingsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.openSettingsToolStripMenuItem.Text = "Open Settings";
+            this.openSettingsToolStripMenuItem.Click += new System.EventHandler(this.openSettingsToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // openSettingsToolStripMenuItem
-            // 
-            this.openSettingsToolStripMenuItem.Name = "openSettingsToolStripMenuItem";
-            this.openSettingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.openSettingsToolStripMenuItem.Text = "Open Settings";
-            this.openSettingsToolStripMenuItem.Click += new System.EventHandler(this.openSettingsToolStripMenuItem_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label1.Location = new System.Drawing.Point(23, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 11;
             this.label1.Text = "ConnectionString";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Search Type";
+            // 
+            // strSearchTyp
+            // 
+            this.strSearchTyp.FormattingEnabled = true;
+            this.strSearchTyp.Items.AddRange(new object[] {
+            "Exact Search",
+            "Wildcard Search"});
+            this.strSearchTyp.Location = new System.Drawing.Point(117, 60);
+            this.strSearchTyp.Name = "strSearchTyp";
+            this.strSearchTyp.Size = new System.Drawing.Size(146, 21);
+            this.strSearchTyp.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(372, 287);
+            this.ClientSize = new System.Drawing.Size(589, 287);
+            this.Controls.Add(this.strSearchTyp);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.label4);
@@ -158,6 +183,8 @@
         private System.Windows.Forms.ToolStripMenuItem openSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox strSearchTyp;
     }
 }
 
