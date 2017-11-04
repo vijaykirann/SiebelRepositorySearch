@@ -13,11 +13,29 @@ namespace SiebelRepositorySearch
 {
     public partial class Form1 : Form
     {
+        public DataSet RESDS;
+        public DataTable RESDT;
+        object[] objRow;
         OdbcConnection conn;
         public Form1()
         {
             InitializeComponent();
             label1.Text = Properties.Settings.Default.ConnectString;
+            CreateDS();
+        }
+
+        private void CreateDS()
+        {
+            RESDS = null;
+            RESDS = new DataSet();
+            RESDT = new DataTable("SQL");
+            RESDS.Tables.Add(this.RESDT);
+            RESDT.Columns.Add("OBJECT").Caption = "OBJECT";
+            RESDT.Columns.Add("NAME").Caption = "NAME";
+            RESDT.Columns.Add("SUBOBJECT1").Caption = "SUBOBJECT1";
+            RESDT.Columns.Add("SUBOBJECT2").Caption = "SUBOBJECT2";
+            RESDT.Columns.Add("SUBOBJECT3").Caption = "SUBOBJECT3";
+            RESDT.Columns.Add("SUBOBJECT4").Caption = "SUBOBJECT4";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -27,23 +45,30 @@ namespace SiebelRepositorySearch
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var txtCN = Properties.Settings.Default.ConnectString;
-            var txtUN = Properties.Settings.Default.Usr;
-            var txtPW = Properties.Settings.Default.Pwd;
-            var txtDB = Properties.Settings.Default.DBType;
-            var strRepId = Properties.Settings.Default.RepId;
-            string strSrch = txtSearch.Text;
-            string strSrchType = strSearchTyp.SelectedItem.ToString();
-            string Wildsrch = "Wildcard Search";
-            if (strSrchType == Wildsrch)
-            strSrch = "%"+ strSrch + "%";
-            string connstr = "DSN=" + txtCN + ";Uid=" + txtUN + ";Pwd=" + txtPW + "";
-            //OdbcConnection conn = new OdbcConnection("DSN=SSD Local Db default instance;Uid=SADMIN;Pwd=SADMIN");
-            conn = new OdbcConnection(connstr);
-            conn.Open();
-            AppletSearchSpec(strRepId,strSrch);
-//            AppletBS(strRepId, strSrch);
-            conn.Close();
+            try {
+                var txtCN = Properties.Settings.Default.ConnectString;
+                var txtUN = Properties.Settings.Default.Usr;
+                var txtPW = Properties.Settings.Default.Pwd;
+                var txtDB = Properties.Settings.Default.DBType;
+                var strRepId = Properties.Settings.Default.RepId;
+                string strSrch = txtSearch.Text;
+                string strSrchType = strSearchTyp.SelectedItem.ToString();
+                string Wildsrch = "Wildcard Search";
+                if (strSrchType == Wildsrch)
+                    strSrch = "%" + strSrch + "%";
+                string connstr = "DSN=" + txtCN + ";Uid=" + txtUN + ";Pwd=" + txtPW + "";
+                //OdbcConnection conn = new OdbcConnection("DSN=SSD Local Db default instance;Uid=SADMIN;Pwd=SADMIN");
+                conn = new OdbcConnection(connstr);
+                conn.Open();
+                AppletSearchSpec(strRepId, strSrch);
+                //            AppletBS(strRepId, strSrch);
+                conn.Close();
+                dataGridView1.DataSource = RESDT;
+            }
+            catch
+            {
+                MessageBox.Show("Invalid Connextion");
+            }
         }
 
         private void AppletBS(string strRepId, string strSrch)
@@ -58,7 +83,10 @@ namespace SiebelRepositorySearch
             OdbcDataReader dbReader = dbCmd.ExecuteReader();
             while(dbReader.Read())
             {
-                var A = dbReader[1].ToString();
+                DataRowCollection newrow = this.RESDT.Rows;
+                objRow = new object[] { "AppletSearchSpec", dbReader[1].ToString()};
+                newrow.Add(objRow);
+               // var A = dbReader[1].ToString();
             }
             dbReader.Close();
             dbCmd.Dispose();
