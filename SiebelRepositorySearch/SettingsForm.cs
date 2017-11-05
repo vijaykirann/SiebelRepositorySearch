@@ -37,6 +37,7 @@ namespace SiebelRepositorySearch
             {
                 MessageBox.Show("Test the Connection before Saving.");
             }
+            Properties.Settings.Default.AppletBS = AppletBS.Checked;
             Properties.Settings.Default.AppletSearchSpec = AppletSrchSpec.Checked;
             Properties.Settings.Default.Save();
             Close();
