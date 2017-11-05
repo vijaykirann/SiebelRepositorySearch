@@ -20,7 +20,8 @@ namespace SiebelRepositorySearch
             txtCN.Text = Properties.Settings.Default.ConnectString;
             txtUN.Text = Properties.Settings.Default.Usr;
             txtPW.Text = Properties.Settings.Default.Pwd;
-            txtDB.Text = Properties.Settings.Default.DBType;            
+            txtDB.Text = Properties.Settings.Default.DBType;
+            AppletSrchSpec.Checked= Properties.Settings.Default.AppletSearchSpec;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,13 +32,14 @@ namespace SiebelRepositorySearch
                 Properties.Settings.Default.Usr = txtUN.Text;
                 Properties.Settings.Default.Pwd = txtPW.Text;
                 Properties.Settings.Default.DBType = txtDB.Text;
-                Properties.Settings.Default.Save();
-                this.Close();
             }
             else
             {
                 MessageBox.Show("Test the Connection before Saving.");
             }
+            Properties.Settings.Default.AppletSearchSpec = AppletSrchSpec.Checked;
+            Properties.Settings.Default.Save();
+            Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

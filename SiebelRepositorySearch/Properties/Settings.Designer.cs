@@ -82,5 +82,17 @@ namespace SiebelRepositorySearch.Properties {
                 this["RepId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AppletSearchSpec {
+            get {
+                return ((bool)(this["AppletSearchSpec"]));
+            }
+            set {
+                this["AppletSearchSpec"] = value;
+            }
+        }
     }
 }

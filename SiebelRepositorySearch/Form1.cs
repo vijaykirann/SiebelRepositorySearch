@@ -46,6 +46,7 @@ namespace SiebelRepositorySearch
         private void button1_Click(object sender, EventArgs e)
         {
             try {
+                RESDT.Rows.Clear();
                 var txtCN = Properties.Settings.Default.ConnectString;
                 var txtUN = Properties.Settings.Default.Usr;
                 var txtPW = Properties.Settings.Default.Pwd;
@@ -60,31 +61,44 @@ namespace SiebelRepositorySearch
                 //OdbcConnection conn = new OdbcConnection("DSN=SSD Local Db default instance;Uid=SADMIN;Pwd=SADMIN");
                 conn = new OdbcConnection(connstr);
                 conn.Open();
+                if(Properties.Settings.Default.AppletSearchSpec == true)
                 AppletSearchSpec(strRepId, strSrch);
-                //            AppletBS(strRepId, strSrch);
+                AppletBS(strRepId, strSrch);
                 conn.Close();
                 dataGridView1.DataSource = RESDT;
-            }
+                }
             catch
-            {
-                MessageBox.Show("Invalid Connextion");
-            }
+                {
+                    MessageBox.Show("Invalid Connextion");
+                }
         }
 
         private void AppletBS(string strRepId, string strSrch)
         {
-            throw new NotImplementedException();
+            OdbcCommand dbCmd = conn.CreateCommand();
+            dbCmd.CommandText = "SELECT S_REPOSITORY.NAME as REP_NAME, S_APPLET.NAME as NAME2,S_APLT_BRSSCRPT.NAME as NAME1 from siebel.S_APPLET,siebel.S_APLT_BRSSCRPT,siebel.S_REPOSITORY where S_APPLET.REPOSITORY_ID = '" + strRepId + "'  and S_APPLET.ROW_ID = S_APLT_BRSSCRPT.APPLET_ID and S_APLT_BRSSCRPT.SCRIPT like '" + strSrch + "'";
+            OdbcDataReader dbReader = dbCmd.ExecuteReader();
+            while (dbReader.Read())
+            {
+                DataRowCollection newrow = this.RESDT.Rows;
+                objRow = new object[] { "Applet Browser Script", dbReader[0].ToString(), dbReader[1].ToString() };
+                newrow.Add(objRow);
+                // var A = dbReader[1].ToString();
+            }
+            dbReader.Close();
+            dbCmd.Dispose();
+
         }
 
         private void AppletSearchSpec(string strRepId, string strSrch)
         {
             OdbcCommand dbCmd = conn.CreateCommand();
-            dbCmd.CommandText = "select S_REPOSITORY.NAME as REP_NAME, S_APPLET.NAME as NAME1,S_APPLET.SRCHSPEC as VALUE from siebel.S_APPLET,siebel.S_REPOSITORY where S_APPLET.REPOSITORY_ID = S_REPOSITORY.ROW_ID AND S_REPOSITORY.ROW_ID = '"+ strRepId + "' AND S_APPLET.SRCHSPEC like '"+ strSrch + "'";
+            dbCmd.CommandText = "select S_APPLET.NAME as NAME1,S_APPLET.SRCHSPEC as VALUE from siebel.S_APPLET,siebel.S_REPOSITORY where S_APPLET.REPOSITORY_ID = S_REPOSITORY.ROW_ID AND S_REPOSITORY.ROW_ID = '"+ strRepId + "' AND S_APPLET.SRCHSPEC like '"+ strSrch + "'";
             OdbcDataReader dbReader = dbCmd.ExecuteReader();
             while(dbReader.Read())
             {
                 DataRowCollection newrow = this.RESDT.Rows;
-                objRow = new object[] { "AppletSearchSpec", dbReader[1].ToString()};
+                objRow = new object[] { "Applet Search Spec", dbReader[0].ToString(), dbReader[1].ToString()};
                 newrow.Add(objRow);
                // var A = dbReader[1].ToString();
             }
@@ -96,6 +110,11 @@ namespace SiebelRepositorySearch
         {
             SettingsForm SF = new SettingsForm();
             SF.ShowDialog();
+        }
+
+        private void settingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
