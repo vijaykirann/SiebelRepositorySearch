@@ -65,7 +65,7 @@ namespace SiebelRepositorySearch
                 if(Properties.Settings.Default.AppletBS == true)
                 AppletBS(strRepId, strSrch);
                 conn.Close();
-                dataGridView1.DataSource = RESDT;
+
                 }
             catch
                 {
