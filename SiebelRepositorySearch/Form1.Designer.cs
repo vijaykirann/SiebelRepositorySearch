@@ -1,6 +1,6 @@
 ﻿namespace SiebelRepositorySearch
 {
-    partial class Form1
+    partial class SiebelRepositorySearch
     {
         /// <summary>
         /// Required designer variable.
@@ -39,9 +39,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.strSearchTyp = new System.Windows.Forms.ComboBox();
-            this.objectListView1 = new BrightIdeasSoftware.ObjectListView();
+            this.ResultListView = new BrightIdeasSoftware.ObjectListView();
+            this._Name = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.ObjectName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._ObjectName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._SubObject = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._SubObject1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._SubObject2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._SubObject3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResultListView)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -50,7 +57,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Connect";
+            this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -141,22 +148,77 @@
             this.strSearchTyp.TabIndex = 13;
             this.strSearchTyp.Text = "Wildcard Search";
             // 
-            // objectListView1
+            // ResultListView
             // 
-            this.objectListView1.CellEditUseWholeCell = false;
-            this.objectListView1.Location = new System.Drawing.Point(12, 108);
-            this.objectListView1.Name = "objectListView1";
-            this.objectListView1.Size = new System.Drawing.Size(565, 167);
-            this.objectListView1.TabIndex = 14;
-            this.objectListView1.UseCompatibleStateImageBehavior = false;
-            this.objectListView1.View = System.Windows.Forms.View.Details;
+            this.ResultListView.AllColumns.Add(this._ObjectName);
+            this.ResultListView.AllColumns.Add(this._Name);
+            this.ResultListView.AllColumns.Add(this._SubObject);
+            this.ResultListView.AllColumns.Add(this._SubObject1);
+            this.ResultListView.AllColumns.Add(this._SubObject2);
+            this.ResultListView.AllColumns.Add(this._SubObject3);
+            this.ResultListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResultListView.CellEditUseWholeCell = false;
+            this.ResultListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this._ObjectName,
+            this._Name,
+            this._SubObject,
+            this._SubObject1,
+            this._SubObject2,
+            this._SubObject3});
+            this.ResultListView.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ResultListView.Location = new System.Drawing.Point(12, 108);
+            this.ResultListView.Name = "ResultListView";
+            this.ResultListView.ShowItemCountOnGroups = true;
+            this.ResultListView.Size = new System.Drawing.Size(565, 167);
+            this.ResultListView.TabIndex = 14;
+            this.ResultListView.UseCompatibleStateImageBehavior = false;
+            this.ResultListView.View = System.Windows.Forms.View.Details;
             // 
-            // Form1
+            // _Name
+            // 
+            this._Name.AspectName = "Name";
+            this._Name.AspectToStringFormat = "";
+            this._Name.DisplayIndex = 0;
+            this._Name.Text = "Name";
+            // 
+            // ObjectName
+            // 
+            this.ObjectName.DisplayIndex = 0;
+            this.ObjectName.Width = 123;
+            // 
+            // _ObjectName
+            // 
+            this._ObjectName.AspectName = "ObjectName";
+            this._ObjectName.Text = "ObjectName";
+            // 
+            // _SubObject
+            // 
+            this._SubObject.AspectName = "SubObject";
+            this._SubObject.Text = "SubObject";
+            // 
+            // _SubObject1
+            // 
+            this._SubObject1.AspectName = "SubObject1";
+            this._SubObject1.Text = "SubObject1";
+            // 
+            // _SubObject2
+            // 
+            this._SubObject2.AspectName = "SubObject2";
+            this._SubObject2.Text = "SubObject2";
+            // 
+            // _SubObject3
+            // 
+            this._SubObject3.AspectName = "SubObject3";
+            this._SubObject3.Text = "SubObject3";
+            // 
+            // SiebelRepositorySearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 287);
-            this.Controls.Add(this.objectListView1);
+            this.Controls.Add(this.ResultListView);
             this.Controls.Add(this.strSearchTyp);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -165,12 +227,12 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "SiebelRepositorySearch";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResultListView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,7 +250,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox strSearchTyp;
-        private BrightIdeasSoftware.ObjectListView objectListView1;
+        private BrightIdeasSoftware.ObjectListView ResultListView;
+        private BrightIdeasSoftware.OLVColumn ObjectName;
+        private BrightIdeasSoftware.OLVColumn _Name;
+        private BrightIdeasSoftware.OLVColumn _ObjectName;
+        private BrightIdeasSoftware.OLVColumn _SubObject;
+        private BrightIdeasSoftware.OLVColumn _SubObject1;
+        private BrightIdeasSoftware.OLVColumn _SubObject2;
+        private BrightIdeasSoftware.OLVColumn _SubObject3;
     }
 }
 

@@ -13,12 +13,12 @@ using BrightIdeasSoftware;
 namespace SiebelRepositorySearch
 {
 
-    public partial class Form1 : Form
+    public partial class SiebelRepositorySearch : Form
     {
  //       object[] objRow;
         OdbcConnection conn;
         static internal List<result> resultlist = new List<result>();
-        public Form1()
+        public SiebelRepositorySearch()
         {
             InitializeComponent();
             label1.Text = Properties.Settings.Default.ConnectString;
@@ -50,11 +50,16 @@ namespace SiebelRepositorySearch
                 if(Properties.Settings.Default.AppletBS == true)
                 AppletBS(strRepId, strSrch);
                 conn.Close();
-                
-            }
+                  this.ResultListView.SetObjects(resultlist);
+                }
             catch
                 {
                     MessageBox.Show("Invalid Connextion");
+                }
+            finally
+                {
+                
+                resultlist = null;
                 }
         }
 

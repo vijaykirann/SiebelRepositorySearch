@@ -52,9 +52,8 @@ namespace SiebelRepositorySearch
         private string subobject3;
         static internal List<result> Getresult()
         {
-       //     if (result.AllSongs.Count >  0)
-            return result.AllSongs;
+            return result.Alllist;
         }
-        static private List<result> AllSongs = new List<result>();
+        static private List<result> Alllist = new List<result>();
     }
 }
