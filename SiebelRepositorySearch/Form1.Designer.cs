@@ -39,7 +39,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.strSearchTyp = new System.Windows.Forms.ComboBox();
+            this.objectListView1 = new BrightIdeasSoftware.ObjectListView();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -139,11 +141,22 @@
             this.strSearchTyp.TabIndex = 13;
             this.strSearchTyp.Text = "Wildcard Search";
             // 
+            // objectListView1
+            // 
+            this.objectListView1.CellEditUseWholeCell = false;
+            this.objectListView1.Location = new System.Drawing.Point(12, 108);
+            this.objectListView1.Name = "objectListView1";
+            this.objectListView1.Size = new System.Drawing.Size(565, 167);
+            this.objectListView1.TabIndex = 14;
+            this.objectListView1.UseCompatibleStateImageBehavior = false;
+            this.objectListView1.View = System.Windows.Forms.View.Details;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 287);
+            this.Controls.Add(this.objectListView1);
             this.Controls.Add(this.strSearchTyp);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -157,6 +170,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,6 +188,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox strSearchTyp;
+        private BrightIdeasSoftware.ObjectListView objectListView1;
     }
 }
 

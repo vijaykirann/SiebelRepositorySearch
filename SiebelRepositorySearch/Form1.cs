@@ -8,45 +8,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Odbc;
+using BrightIdeasSoftware;
 
 namespace SiebelRepositorySearch
 {
+
     public partial class Form1 : Form
     {
-        public DataSet RESDS;
-        public DataTable RESDT;
-        object[] objRow;
+ //       object[] objRow;
         OdbcConnection conn;
+        static internal List<result> resultlist = new List<result>();
         public Form1()
         {
             InitializeComponent();
             label1.Text = Properties.Settings.Default.ConnectString;
-            CreateDS();
-        }
-
-        private void CreateDS()
-        {
-            RESDS = null;
-            RESDS = new DataSet();
-            RESDT = new DataTable("SQL");
-            RESDS.Tables.Add(this.RESDT);
-            RESDT.Columns.Add("OBJECT").Caption = "OBJECT";
-            RESDT.Columns.Add("NAME").Caption = "NAME";
-            RESDT.Columns.Add("SUBOBJECT1").Caption = "SUBOBJECT1";
-            RESDT.Columns.Add("SUBOBJECT2").Caption = "SUBOBJECT2";
-            RESDT.Columns.Add("SUBOBJECT3").Caption = "SUBOBJECT3";
-            RESDT.Columns.Add("SUBOBJECT4").Caption = "SUBOBJECT4";
-        }
+         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             try {
-                RESDT.Rows.Clear();
                 var txtCN = Properties.Settings.Default.ConnectString;
                 var txtUN = Properties.Settings.Default.Usr;
                 var txtPW = Properties.Settings.Default.Pwd;
@@ -65,8 +50,8 @@ namespace SiebelRepositorySearch
                 if(Properties.Settings.Default.AppletBS == true)
                 AppletBS(strRepId, strSrch);
                 conn.Close();
-
-                }
+                
+            }
             catch
                 {
                     MessageBox.Show("Invalid Connextion");
@@ -80,9 +65,7 @@ namespace SiebelRepositorySearch
             OdbcDataReader dbReader = dbCmd.ExecuteReader();
             while (dbReader.Read())
             {
-                DataRowCollection newrow = this.RESDT.Rows;
-                objRow = new object[] { "Applet Browser Script", dbReader[0].ToString(), dbReader[1].ToString() };
-                newrow.Add(objRow);
+                 resultlist.Add(new result("Applet Browser Script", dbReader[0].ToString(), dbReader[1].ToString(), "", "", ""));
             }
             dbReader.Close();
             dbCmd.Dispose();
@@ -96,9 +79,7 @@ namespace SiebelRepositorySearch
             OdbcDataReader dbReader = dbCmd.ExecuteReader();
             while(dbReader.Read())
             {
-                DataRowCollection newrow = this.RESDT.Rows;
-                objRow = new object[] { "Applet Search Spec", dbReader[0].ToString(), dbReader[1].ToString()};
-                newrow.Add(objRow);
+                resultlist.Add(new result("Applet Search Spec", dbReader[0].ToString(), dbReader[1].ToString(), "", "",""));
             }
             dbReader.Close();
             dbCmd.Dispose();
