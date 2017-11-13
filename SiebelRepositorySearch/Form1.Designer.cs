@@ -107,7 +107,7 @@
             // openSettingsToolStripMenuItem
             // 
             this.openSettingsToolStripMenuItem.Name = "openSettingsToolStripMenuItem";
-            this.openSettingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openSettingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.openSettingsToolStripMenuItem.Text = "Settings";
             this.openSettingsToolStripMenuItem.Click += new System.EventHandler(this.openSettingsToolStripMenuItem_Click);
             // 
@@ -179,32 +179,38 @@
             // _ObjectName
             // 
             this._ObjectName.AspectName = "ObjectName";
+            this._ObjectName.FillsFreeSpace = true;
             this._ObjectName.Text = "ObjectName";
             // 
             // _Name
             // 
             this._Name.AspectName = "Name";
             this._Name.AspectToStringFormat = "";
+            this._Name.FillsFreeSpace = true;
             this._Name.Text = "Name";
             // 
             // _SubObject
             // 
             this._SubObject.AspectName = "SubObject";
+            this._SubObject.FillsFreeSpace = true;
             this._SubObject.Text = "SubObject";
             // 
             // _SubObject1
             // 
             this._SubObject1.AspectName = "SubObject1";
+            this._SubObject1.FillsFreeSpace = true;
             this._SubObject1.Text = "SubObject1";
             // 
             // _SubObject2
             // 
             this._SubObject2.AspectName = "SubObject2";
+            this._SubObject2.FillsFreeSpace = true;
             this._SubObject2.Text = "SubObject2";
             // 
             // _SubObject3
             // 
             this._SubObject3.AspectName = "SubObject3";
+            this._SubObject3.FillsFreeSpace = true;
             this._SubObject3.Text = "SubObject3";
             // 
             // ObjectName

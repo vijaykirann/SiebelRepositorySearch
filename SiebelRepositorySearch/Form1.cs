@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,15 +30,17 @@ namespace SiebelRepositorySearch
 
         }
 
-        public void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs ex)
         {
+            var strRepId = "";
+            string strSrch = "";
             try {
                 var txtCN = Properties.Settings.Default.ConnectString;
                 var txtUN = Properties.Settings.Default.Usr;
                 var txtPW = Properties.Settings.Default.Pwd;
                 var txtDB = Properties.Settings.Default.DBType;
-                var strRepId = Properties.Settings.Default.RepId;
-                string strSrch = txtSearch.Text;
+                strRepId = Properties.Settings.Default.RepId;
+                strSrch = txtSearch.Text;
                 string strSrchType = strSearchTyp.SelectedItem.ToString();
                 string Wildsrch = "Wildcard Search";
                 if (strSrchType == Wildsrch)
@@ -50,16 +53,18 @@ namespace SiebelRepositorySearch
                 if(Properties.Settings.Default.AppletBS == true)
                 AppletBS(strRepId, strSrch);
                 conn.Close();
-                  this.ResultListView.SetObjects(resultlist);
+                this.ResultListView.SetObjects(resultlist);
                 }
-            catch
+            catch(Exception e)
                 {
-                    MessageBox.Show("Invalid Connextion");
+                 //  MessageBox.Show("An error occurred: '{0}'", e);
+                Console.WriteLine("An error occurred: '{0}'", e);
                 }
             finally
-                {
-                
-                resultlist = null;
+                {                
+                resultlist.Clear();
+                strRepId = "";
+                strSrch = "";
                 }
         }
 

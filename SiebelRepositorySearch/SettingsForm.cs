@@ -22,6 +22,7 @@ namespace SiebelRepositorySearch
             txtPW.Text = Properties.Settings.Default.Pwd;
             txtDB.Text = Properties.Settings.Default.DBType;
             AppletSrchSpec.Checked= Properties.Settings.Default.AppletSearchSpec;
+            AppletBS.Checked = Properties.Settings.Default.AppletBS;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,8 +38,8 @@ namespace SiebelRepositorySearch
             {
                 MessageBox.Show("Test the Connection before Saving.");
             }
-            Properties.Settings.Default.AppletBS = AppletBS.Checked;
             Properties.Settings.Default.AppletSearchSpec = AppletSrchSpec.Checked;
+            Properties.Settings.Default.AppletBS = AppletBS.Checked;
             Properties.Settings.Default.Save();
             Close();
         }
