@@ -156,6 +156,7 @@
             this.ResultListView.AllColumns.Add(this._SubObject1);
             this.ResultListView.AllColumns.Add(this._SubObject2);
             this.ResultListView.AllColumns.Add(this._SubObject3);
+            this.ResultListView.AlternateRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ResultListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -168,10 +169,12 @@
             this._SubObject2,
             this._SubObject3});
             this.ResultListView.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ResultListView.Location = new System.Drawing.Point(12, 108);
+            this.ResultListView.HeaderUsesThemes = true;
+            this.ResultListView.Location = new System.Drawing.Point(0, 108);
             this.ResultListView.Name = "ResultListView";
             this.ResultListView.ShowItemCountOnGroups = true;
-            this.ResultListView.Size = new System.Drawing.Size(565, 167);
+            this.ResultListView.ShowItemToolTips = true;
+            this.ResultListView.Size = new System.Drawing.Size(589, 180);
             this.ResultListView.TabIndex = 14;
             this.ResultListView.UseCompatibleStateImageBehavior = false;
             this.ResultListView.View = System.Windows.Forms.View.Details;
@@ -179,39 +182,39 @@
             // _ObjectName
             // 
             this._ObjectName.AspectName = "ObjectName";
-            this._ObjectName.FillsFreeSpace = true;
             this._ObjectName.Text = "ObjectName";
+            this._ObjectName.Width = 120;
             // 
             // _Name
             // 
             this._Name.AspectName = "Name";
             this._Name.AspectToStringFormat = "";
-            this._Name.FillsFreeSpace = true;
             this._Name.Text = "Name";
+            this._Name.Width = 120;
             // 
             // _SubObject
             // 
             this._SubObject.AspectName = "SubObject";
-            this._SubObject.FillsFreeSpace = true;
             this._SubObject.Text = "SubObject";
+            this._SubObject.Width = 120;
             // 
             // _SubObject1
             // 
             this._SubObject1.AspectName = "SubObject1";
-            this._SubObject1.FillsFreeSpace = true;
             this._SubObject1.Text = "SubObject1";
+            this._SubObject1.Width = 120;
             // 
             // _SubObject2
             // 
             this._SubObject2.AspectName = "SubObject2";
-            this._SubObject2.FillsFreeSpace = true;
             this._SubObject2.Text = "SubObject2";
+            this._SubObject2.Width = 120;
             // 
             // _SubObject3
             // 
             this._SubObject3.AspectName = "SubObject3";
-            this._SubObject3.FillsFreeSpace = true;
             this._SubObject3.Text = "SubObject3";
+            this._SubObject3.Width = 120;
             // 
             // ObjectName
             // 
@@ -232,6 +235,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(605, 325);
             this.Name = "SiebelRepositorySearch";
             this.Text = "Siebel Repository Search";
             this.Load += new System.EventHandler(this.Form1_Load);
