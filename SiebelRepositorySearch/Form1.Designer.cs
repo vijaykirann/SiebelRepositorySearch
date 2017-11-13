@@ -40,13 +40,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.strSearchTyp = new System.Windows.Forms.ComboBox();
             this.ResultListView = new BrightIdeasSoftware.ObjectListView();
-            this._Name = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.ObjectName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._ObjectName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this._Name = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._SubObject = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._SubObject1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._SubObject2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._SubObject3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.ObjectName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResultListView)).BeginInit();
             this.SuspendLayout();
@@ -107,7 +107,7 @@
             // openSettingsToolStripMenuItem
             // 
             this.openSettingsToolStripMenuItem.Name = "openSettingsToolStripMenuItem";
-            this.openSettingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.openSettingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openSettingsToolStripMenuItem.Text = "Settings";
             this.openSettingsToolStripMenuItem.Click += new System.EventHandler(this.openSettingsToolStripMenuItem_Click);
             // 
@@ -176,22 +176,16 @@
             this.ResultListView.UseCompatibleStateImageBehavior = false;
             this.ResultListView.View = System.Windows.Forms.View.Details;
             // 
-            // _Name
-            // 
-            this._Name.AspectName = "Name";
-            this._Name.AspectToStringFormat = "";
-            this._Name.DisplayIndex = 0;
-            this._Name.Text = "Name";
-            // 
-            // ObjectName
-            // 
-            this.ObjectName.DisplayIndex = 0;
-            this.ObjectName.Width = 123;
-            // 
             // _ObjectName
             // 
             this._ObjectName.AspectName = "ObjectName";
             this._ObjectName.Text = "ObjectName";
+            // 
+            // _Name
+            // 
+            this._Name.AspectName = "Name";
+            this._Name.AspectToStringFormat = "";
+            this._Name.Text = "Name";
             // 
             // _SubObject
             // 
@@ -213,6 +207,11 @@
             this._SubObject3.AspectName = "SubObject3";
             this._SubObject3.Text = "SubObject3";
             // 
+            // ObjectName
+            // 
+            this.ObjectName.DisplayIndex = 0;
+            this.ObjectName.Width = 123;
+            // 
             // SiebelRepositorySearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,7 +227,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SiebelRepositorySearch";
-            this.Text = "Form1";
+            this.Text = "Siebel Repository Search";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
