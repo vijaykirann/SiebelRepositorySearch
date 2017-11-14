@@ -32,46 +32,54 @@ namespace SiebelRepositorySearch
 
         public void button1_Click(object sender, EventArgs ex)
         {
-            var strRepId = "";
-            string strSrch = "";
-            try {
-                var txtCN = Properties.Settings.Default.ConnectString;
-                var txtUN = Properties.Settings.Default.Usr;
-                var txtPW = Properties.Settings.Default.Pwd;
-                var txtDB = Properties.Settings.Default.DBType;
-                strRepId = Properties.Settings.Default.RepId;
-                strSrch = txtSearch.Text;
-                string strSrchType = strSearchTyp.SelectedItem.ToString();
-                string Wildsrch = "Wildcard Search";
-                if (strSrchType == Wildsrch)
-                    strSrch = "%" + strSrch + "%";
-                string connstr = "DSN=" + txtCN + ";Uid=" + txtUN + ";Pwd=" + txtPW + "";
-                conn = new OdbcConnection(connstr);
-                conn.Open();
-                if(Properties.Settings.Default.AppletSearchSpec == true)
-                AppletSearchSpec(strRepId, strSrch);
-                if(Properties.Settings.Default.AppletBS == true)
-                AppletBS(strRepId, strSrch);
-                if (Properties.Settings.Default.AppletSS == true)
-                AppletSS(strRepId, strSrch);
-
-                //Closing Events from here//
-                conn.Close();
-                this.ResultListView.SetObjects(resultlist);
-                this.collapseGroup();
-                }
-            catch(Exception e)
+            if (txtSearch.Text == "")
+                MessageBox.Show("Did you miss something ?");
+            else {
+                var strRepId = "";
+                string strSrch = "";
+                try
                 {
-                 //  MessageBox.Show("An error occurred: '{0}'", e);
-                Console.WriteLine("An error occurred: '{0}'", e);
+                    var txtCN = Properties.Settings.Default.ConnectString;
+                    var txtUN = Properties.Settings.Default.Usr;
+                    var txtPW = Properties.Settings.Default.Pwd;
+                    var txtDB = Properties.Settings.Default.DBType;
+                    strRepId = Properties.Settings.Default.RepId;
+                    strSrch = txtSearch.Text;
+                    string strSrchType = strSearchTyp.SelectedItem.ToString();
+                    string Wildsrch = "Wildcard Search";
+                    if (strSrchType == Wildsrch)
+                        strSrch = "%" + strSrch + "%";
+                    string connstr = "DSN=" + txtCN + ";Uid=" + txtUN + ";Pwd=" + txtPW + "";
+                    conn = new OdbcConnection(connstr);
+                    conn.Open();
+                    if (Properties.Settings.Default.AppletSearchSpec == true)
+                        AppletSearchSpec(strRepId, strSrch);
+                    if (Properties.Settings.Default.AppletBS == true)
+                        AppletBS(strRepId, strSrch);
+                    if (Properties.Settings.Default.AppletSS == true)
+                        AppletSS(strRepId, strSrch);
+                    if (Properties.Settings.Default.AppletUPV == true)
+                        AppletUPV(strRepId, strSrch);
+
+                    //Closing Events from here//
+                    conn.Close();
+                    this.ResultListView.SetObjects(resultlist);
+                    this.collapseGroup();
                 }
-            finally
-                {                
-                resultlist.Clear();
-                strRepId = "";
-                strSrch = "";
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
                 }
+                finally
+                {
+                    resultlist.Clear();
+                    strRepId = "";
+                    strSrch = "";
+                }
+            }        
         }
+
+
 
         private void collapseGroup()
         {
@@ -119,7 +127,18 @@ namespace SiebelRepositorySearch
             dbReader.Close();
             dbCmd.Dispose();
         }
-
+        private void AppletUPV(string strRepId, string strSrch)
+        {
+            OdbcCommand dbCmd = conn.CreateCommand();
+            dbCmd.CommandText = "SELECT S_APPLET.NAME,S_APPLET_UPROP.NAME,S_APPLET_UPROP.VALUE FROM siebel.S_APPLET,siebel.S_APPLET_UPROP,siebel.S_REPOSITORY WHERE S_APPLET.REPOSITORY_ID = '" + strRepId + "' and S_APPLET.ROW_ID = S_APPLET_UPROP.APPLET_ID AND S_APPLET_UPROP.VALUE like '" + strSrch + "'";
+            OdbcDataReader dbReader = dbCmd.ExecuteReader();
+            while (dbReader.Read())
+            {
+                resultlist.Add(new result("Applet User Property Value", dbReader[0].ToString(), dbReader[1].ToString(), dbReader[2].ToString(), "", ""));
+            }
+            dbReader.Close();
+            dbCmd.Dispose();
+        }
 
         private void openSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {

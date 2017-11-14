@@ -42,6 +42,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.AppletBS = new System.Windows.Forms.CheckBox();
             this.AppletSS = new System.Windows.Forms.CheckBox();
+            this.AppletUPV = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -182,11 +183,22 @@
             this.AppletSS.Text = "Applet Server Script";
             this.AppletSS.UseVisualStyleBackColor = true;
             // 
+            // AppletUPV
+            // 
+            this.AppletUPV.AutoSize = true;
+            this.AppletUPV.Location = new System.Drawing.Point(393, 167);
+            this.AppletUPV.Name = "AppletUPV";
+            this.AppletUPV.Size = new System.Drawing.Size(136, 17);
+            this.AppletUPV.TabIndex = 15;
+            this.AppletUPV.Text = "Applet User Prop Value";
+            this.AppletUPV.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 298);
+            this.Controls.Add(this.AppletUPV);
             this.Controls.Add(this.AppletSS);
             this.Controls.Add(this.AppletBS);
             this.Controls.Add(this.groupBox1);
@@ -216,5 +228,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox AppletBS;
         private System.Windows.Forms.CheckBox AppletSS;
+        private System.Windows.Forms.CheckBox AppletUPV;
     }
 }
