@@ -106,5 +106,17 @@ namespace SiebelRepositorySearch.Properties {
                 this["AppletBS"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AppletSS {
+            get {
+                return ((bool)(this["AppletSS"]));
+            }
+            set {
+                this["AppletSS"] = value;
+            }
+        }
     }
 }

@@ -41,6 +41,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.AppletBS = new System.Windows.Forms.CheckBox();
+            this.AppletSS = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -164,18 +165,29 @@
             // AppletBS
             // 
             this.AppletBS.AutoSize = true;
-            this.AppletBS.Location = new System.Drawing.Point(156, 167);
+            this.AppletBS.Location = new System.Drawing.Point(128, 167);
             this.AppletBS.Name = "AppletBS";
             this.AppletBS.Size = new System.Drawing.Size(132, 17);
             this.AppletBS.TabIndex = 13;
             this.AppletBS.Text = "Applet Browser Scripts";
             this.AppletBS.UseVisualStyleBackColor = true;
             // 
+            // AppletSS
+            // 
+            this.AppletSS.AutoSize = true;
+            this.AppletSS.Location = new System.Drawing.Point(266, 167);
+            this.AppletSS.Name = "AppletSS";
+            this.AppletSS.Size = new System.Drawing.Size(120, 17);
+            this.AppletSS.TabIndex = 14;
+            this.AppletSS.Text = "Applet Server Script";
+            this.AppletSS.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 298);
+            this.Controls.Add(this.AppletSS);
             this.Controls.Add(this.AppletBS);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.AppletSrchSpec);
@@ -203,5 +215,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox AppletBS;
+        private System.Windows.Forms.CheckBox AppletSS;
     }
 }

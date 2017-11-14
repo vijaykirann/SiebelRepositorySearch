@@ -23,6 +23,7 @@ namespace SiebelRepositorySearch
             txtDB.Text = Properties.Settings.Default.DBType;
             AppletSrchSpec.Checked= Properties.Settings.Default.AppletSearchSpec;
             AppletBS.Checked = Properties.Settings.Default.AppletBS;
+            AppletSS.Checked = Properties.Settings.Default.AppletSS;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,6 +41,7 @@ namespace SiebelRepositorySearch
             }
             Properties.Settings.Default.AppletSearchSpec = AppletSrchSpec.Checked;
             Properties.Settings.Default.AppletBS = AppletBS.Checked;
+            Properties.Settings.Default.AppletSS = AppletSS.Checked;
             Properties.Settings.Default.Save();
             Close();
         }

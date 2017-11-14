@@ -52,8 +52,13 @@ namespace SiebelRepositorySearch
                 AppletSearchSpec(strRepId, strSrch);
                 if(Properties.Settings.Default.AppletBS == true)
                 AppletBS(strRepId, strSrch);
+                if (Properties.Settings.Default.AppletSS == true)
+                AppletSS(strRepId, strSrch);
+
+                //Closing Events from here//
                 conn.Close();
                 this.ResultListView.SetObjects(resultlist);
+                this.collapseGroup();
                 }
             catch(Exception e)
                 {
@@ -68,6 +73,15 @@ namespace SiebelRepositorySearch
                 }
         }
 
+        private void collapseGroup()
+        {
+            for (int i = 0; i < ResultListView.OLVGroups.Count; i++)
+            {
+                OLVGroup grp = ResultListView.OLVGroups[i];
+                grp.Collapsed = true;
+            }
+        }
+
         private void AppletBS(string strRepId, string strSrch)
         {
             OdbcCommand dbCmd = conn.CreateCommand();
@@ -79,7 +93,6 @@ namespace SiebelRepositorySearch
             }
             dbReader.Close();
             dbCmd.Dispose();
-
         }
 
         private void AppletSearchSpec(string strRepId, string strSrch)
@@ -94,6 +107,19 @@ namespace SiebelRepositorySearch
             dbReader.Close();
             dbCmd.Dispose();
         }
+        private void AppletSS(string strRepId, string strSrch)
+        {
+            OdbcCommand dbCmd = conn.CreateCommand();
+            dbCmd.CommandText = "SELECT S_APPLET.NAME,S_APPL_WEBSCRPT.NAME FROM SIEBEL.S_APPLET,SIEBEL.S_APPL_WEBSCRPT,SIEBEL.S_REPOSITORY WHERE S_APPLET.REPOSITORY_ID = '"+ strRepId + "' and S_APPLET.ROW_ID = S_APPL_WEBSCRPT.APPLET_ID and S_APPL_WEBSCRPT.SCRIPT like '" + strSrch + "'";
+            OdbcDataReader dbReader = dbCmd.ExecuteReader();
+            while (dbReader.Read())
+            {
+                resultlist.Add(new result("Applet Server Script", dbReader[0].ToString(), dbReader[1].ToString(), "", "", ""));
+            }
+            dbReader.Close();
+            dbCmd.Dispose();
+        }
+
 
         private void openSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {

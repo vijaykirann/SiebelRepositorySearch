@@ -190,7 +190,7 @@
             this._Name.AspectName = "Name";
             this._Name.AspectToStringFormat = "";
             this._Name.Text = "Name";
-            this._Name.Width = 120;
+            this._Name.Width = 300;
             // 
             // _SubObject
             // 
