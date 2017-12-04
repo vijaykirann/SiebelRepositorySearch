@@ -25,6 +25,7 @@ namespace SiebelRepositorySearch
             AppletBS.Checked = Properties.Settings.Default.AppletBS;
             AppletSS.Checked = Properties.Settings.Default.AppletSS;
             AppletUPV.Checked = Properties.Settings.Default.AppletUPV;
+            AppletCUP.Checked = Properties.Settings.Default.AppletCUP;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -44,6 +45,7 @@ namespace SiebelRepositorySearch
             Properties.Settings.Default.AppletBS = AppletBS.Checked;
             Properties.Settings.Default.AppletSS = AppletSS.Checked;
             Properties.Settings.Default.AppletUPV = AppletUPV.Checked;
+            Properties.Settings.Default.AppletCUP = AppletCUP.Checked;
             Properties.Settings.Default.Save();
             Close();
         }

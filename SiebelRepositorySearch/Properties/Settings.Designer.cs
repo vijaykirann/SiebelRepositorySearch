@@ -130,5 +130,17 @@ namespace SiebelRepositorySearch.Properties {
                 this["AppletUPV"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AppletCUP {
+            get {
+                return ((bool)(this["AppletCUP"]));
+            }
+            set {
+                this["AppletCUP"] = value;
+            }
+        }
     }
 }

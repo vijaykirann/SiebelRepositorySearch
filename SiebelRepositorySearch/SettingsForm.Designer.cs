@@ -43,6 +43,7 @@
             this.AppletBS = new System.Windows.Forms.CheckBox();
             this.AppletSS = new System.Windows.Forms.CheckBox();
             this.AppletUPV = new System.Windows.Forms.CheckBox();
+            this.AppletCUP = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,7 +167,7 @@
             // AppletBS
             // 
             this.AppletBS.AutoSize = true;
-            this.AppletBS.Location = new System.Drawing.Point(128, 167);
+            this.AppletBS.Location = new System.Drawing.Point(153, 167);
             this.AppletBS.Name = "AppletBS";
             this.AppletBS.Size = new System.Drawing.Size(132, 17);
             this.AppletBS.TabIndex = 13;
@@ -176,7 +177,7 @@
             // AppletSS
             // 
             this.AppletSS.AutoSize = true;
-            this.AppletSS.Location = new System.Drawing.Point(266, 167);
+            this.AppletSS.Location = new System.Drawing.Point(307, 167);
             this.AppletSS.Name = "AppletSS";
             this.AppletSS.Size = new System.Drawing.Size(120, 17);
             this.AppletSS.TabIndex = 14;
@@ -186,25 +187,36 @@
             // AppletUPV
             // 
             this.AppletUPV.AutoSize = true;
-            this.AppletUPV.Location = new System.Drawing.Point(393, 167);
+            this.AppletUPV.Location = new System.Drawing.Point(445, 167);
             this.AppletUPV.Name = "AppletUPV";
             this.AppletUPV.Size = new System.Drawing.Size(136, 17);
             this.AppletUPV.TabIndex = 15;
             this.AppletUPV.Text = "Applet User Prop Value";
             this.AppletUPV.UseVisualStyleBackColor = true;
             // 
+            // AppletCUP
+            // 
+            this.AppletCUP.AutoSize = true;
+            this.AppletCUP.Location = new System.Drawing.Point(12, 191);
+            this.AppletCUP.Name = "AppletCUP";
+            this.AppletCUP.Size = new System.Drawing.Size(142, 17);
+            this.AppletCUP.TabIndex = 16;
+            this.AppletCUP.Text = "Applet Control User Prop";
+            this.AppletCUP.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 298);
+            this.Controls.Add(this.AppletCUP);
             this.Controls.Add(this.AppletUPV);
             this.Controls.Add(this.AppletSS);
             this.Controls.Add(this.AppletBS);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.AppletSrchSpec);
             this.Name = "SettingsForm";
-            this.Text = "Settings";
+            this.Text = "d";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -229,5 +241,6 @@
         private System.Windows.Forms.CheckBox AppletBS;
         private System.Windows.Forms.CheckBox AppletSS;
         private System.Windows.Forms.CheckBox AppletUPV;
+        private System.Windows.Forms.CheckBox AppletCUP;
     }
 }

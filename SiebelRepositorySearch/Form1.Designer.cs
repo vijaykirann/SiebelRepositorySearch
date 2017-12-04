@@ -47,8 +47,11 @@
             this._SubObject2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this._SubObject3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.ObjectName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResultListView)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -174,7 +177,7 @@
             this.ResultListView.Name = "ResultListView";
             this.ResultListView.ShowItemCountOnGroups = true;
             this.ResultListView.ShowItemToolTips = true;
-            this.ResultListView.Size = new System.Drawing.Size(589, 180);
+            this.ResultListView.Size = new System.Drawing.Size(589, 154);
             this.ResultListView.TabIndex = 14;
             this.ResultListView.UseCompatibleStateImageBehavior = false;
             this.ResultListView.View = System.Windows.Forms.View.Details;
@@ -221,11 +224,27 @@
             this.ObjectName.DisplayIndex = 0;
             this.ObjectName.Width = 123;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 265);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(589, 22);
+            this.statusStrip1.TabIndex = 15;
+            this.statusStrip1.Text = "Progress";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            // 
             // SiebelRepositorySearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 287);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ResultListView);
             this.Controls.Add(this.strSearchTyp);
             this.Controls.Add(this.label2);
@@ -242,6 +261,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResultListView)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,6 +288,8 @@
         private BrightIdeasSoftware.OLVColumn _SubObject1;
         private BrightIdeasSoftware.OLVColumn _SubObject2;
         private BrightIdeasSoftware.OLVColumn _SubObject3;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

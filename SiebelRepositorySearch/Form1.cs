@@ -27,7 +27,6 @@ namespace SiebelRepositorySearch
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         public void button1_Click(object sender, EventArgs ex)
@@ -53,14 +52,35 @@ namespace SiebelRepositorySearch
                     conn = new OdbcConnection(connstr);
                     conn.Open();
                     if (Properties.Settings.Default.AppletSearchSpec == true)
+                    {
+                        toolStripStatusLabel1.Text = "Searching Applet Serch Spec";
+                        statusStrip1.Refresh();
                         AppletSearchSpec(strRepId, strSrch);
+                    }
                     if (Properties.Settings.Default.AppletBS == true)
+                    {
+                        toolStripStatusLabel1.Text = "Searching Applet Browser Script";
+                        statusStrip1.Refresh();
                         AppletBS(strRepId, strSrch);
+                    }
                     if (Properties.Settings.Default.AppletSS == true)
+                    {
+                        toolStripStatusLabel1.Text = "Searching Applet Server Scripts";
+                        statusStrip1.Refresh();
                         AppletSS(strRepId, strSrch);
+                    }
                     if (Properties.Settings.Default.AppletUPV == true)
+                    {
+                        toolStripStatusLabel1.Text = "Searching Applet User Property Values";
+                        statusStrip1.Refresh();
                         AppletUPV(strRepId, strSrch);
-
+                    }
+                    if (Properties.Settings.Default.AppletCUP == true)
+                    {
+                        toolStripStatusLabel1.Text = "Searching Applet Control User Property Values";
+                        statusStrip1.Refresh();
+                        AppletCUP(strRepId, strSrch);
+                    }
                     //Closing Events from here//
                     conn.Close();
                     this.ResultListView.SetObjects(resultlist);
@@ -79,7 +99,18 @@ namespace SiebelRepositorySearch
             }        
         }
 
-
+        private void AppletCUP(string strRepId, string strSrch)
+        {
+            OdbcCommand dbCmd = conn.CreateCommand();
+            dbCmd.CommandText = "select S_APPLET.NAME,S_CONTROL.NAME,S_CONTROL_UPROP.NAME,S_CONTROL_UPROP.VALUE from siebel.S_APPLET,siebel.S_CONTROL,siebel.S_CONTROL_UPROP,siebel.S_REPOSITORY where S_APPLET.REPOSITORY_ID = '" + strRepId + "' and S_APPLET.ROW_ID=S_CONTROL.APPLET_ID and S_CONTROL.ROW_ID=S_CONTROL_UPROP.CONTROL_ID and S_CONTROL_UPROP.VALUE like '" + strSrch + "'";
+            OdbcDataReader dbReader = dbCmd.ExecuteReader();
+            while (dbReader.Read())
+            {
+                resultlist.Add(new result("Applet Control User Property Value", dbReader[0].ToString(), dbReader[1].ToString(), dbReader[2].ToString(), dbReader[3].ToString(), ""));
+            }
+            dbReader.Close();
+            dbCmd.Dispose();
+        }
 
         private void collapseGroup()
         {
