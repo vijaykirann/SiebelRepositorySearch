@@ -44,6 +44,7 @@
             this.AppletSS = new System.Windows.Forms.CheckBox();
             this.AppletUPV = new System.Windows.Forms.CheckBox();
             this.AppletCUP = new System.Windows.Forms.CheckBox();
+            this.AppletDDDV = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -204,11 +205,22 @@
             this.AppletCUP.Text = "Applet Control User Prop";
             this.AppletCUP.UseVisualStyleBackColor = true;
             // 
+            // AppletDDDV
+            // 
+            this.AppletDDDV.AutoSize = true;
+            this.AppletDDDV.Location = new System.Drawing.Point(153, 191);
+            this.AppletDDDV.Name = "AppletDDDV";
+            this.AppletDDDV.Size = new System.Drawing.Size(146, 17);
+            this.AppletDDDV.TabIndex = 17;
+            this.AppletDDDV.Text = "Applet DynDrilldown Dest";
+            this.AppletDDDV.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 298);
+            this.Controls.Add(this.AppletDDDV);
             this.Controls.Add(this.AppletCUP);
             this.Controls.Add(this.AppletUPV);
             this.Controls.Add(this.AppletSS);
@@ -242,5 +254,6 @@
         private System.Windows.Forms.CheckBox AppletSS;
         private System.Windows.Forms.CheckBox AppletUPV;
         private System.Windows.Forms.CheckBox AppletCUP;
+        private System.Windows.Forms.CheckBox AppletDDDV;
     }
 }
