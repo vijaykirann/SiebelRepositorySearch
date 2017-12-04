@@ -53,31 +53,31 @@ namespace SiebelRepositorySearch
                     conn.Open();
                     if (Properties.Settings.Default.AppletSearchSpec == true)
                     {
-                        toolStripStatusLabel1.Text = "Searching Applet Serch Spec";
+                        toolStripStatusLabel1.Text = "Applet Serch Spec";
                         statusStrip1.Refresh();
                         AppletSearchSpec(strRepId, strSrch);
                     }
                     if (Properties.Settings.Default.AppletBS == true)
                     {
-                        toolStripStatusLabel1.Text = "Searching Applet Browser Script";
+                        toolStripStatusLabel1.Text = "Applet Browser Script";
                         statusStrip1.Refresh();
                         AppletBS(strRepId, strSrch);
                     }
                     if (Properties.Settings.Default.AppletSS == true)
                     {
-                        toolStripStatusLabel1.Text = "Searching Applet Server Scripts";
+                        toolStripStatusLabel1.Text = "Applet Server Scripts";
                         statusStrip1.Refresh();
                         AppletSS(strRepId, strSrch);
                     }
                     if (Properties.Settings.Default.AppletUPV == true)
                     {
-                        toolStripStatusLabel1.Text = "Searching Applet User Property Values";
+                        toolStripStatusLabel1.Text = "Applet User Property Values";
                         statusStrip1.Refresh();
                         AppletUPV(strRepId, strSrch);
                     }
                     if (Properties.Settings.Default.AppletCUP == true)
                     {
-                        toolStripStatusLabel1.Text = "Searching Applet Control User Property Values";
+                        toolStripStatusLabel1.Text = "Applet Control User Property Values";
                         statusStrip1.Refresh();
                         AppletCUP(strRepId, strSrch);
                     }
