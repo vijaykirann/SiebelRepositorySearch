@@ -56,25 +56,25 @@ namespace SiebelRepositorySearch
                     {
                         toolStripStatusLabel1.Text = "Applet Serch Spec";
                         statusStrip1.Refresh();
-                        AppletSearchSpec(strRepId, strSrch);
+                        Aplt.AppletSearchSpec(strRepId, strSrch);
                     }
                     if (Properties.Settings.Default.AppletBS == true)
                     {
                         toolStripStatusLabel1.Text = "Applet Browser Script";
                         statusStrip1.Refresh();
-                        AppletBS(strRepId, strSrch);
+                        Aplt.AppletBS(strRepId, strSrch);
                     }
                     if (Properties.Settings.Default.AppletSS == true)
                     {
                         toolStripStatusLabel1.Text = "Applet Server Scripts";
                         statusStrip1.Refresh();
-                        AppletSS(strRepId, strSrch);
+                        Aplt.AppletSS(strRepId, strSrch);
                     }
                     if (Properties.Settings.Default.AppletUPV == true)
                     {
                         toolStripStatusLabel1.Text = "Applet User Property Values";
                         statusStrip1.Refresh();
-                        AppletUPV(strRepId, strSrch);
+                        Aplt.AppletUPV(strRepId, strSrch);
                     }
                     if (Properties.Settings.Default.AppletCUP == true)
                     {
@@ -116,57 +116,6 @@ namespace SiebelRepositorySearch
                 grp.Collapsed = true;
             }
         }
-
-        private void AppletBS(string strRepId, string strSrch)
-        {
-            OdbcCommand dbCmd = conn.CreateCommand();
-            dbCmd.CommandText = "SELECT S_APPLET.NAME,S_APLT_BRSSCRPT.NAME from siebel.S_APPLET,siebel.S_APLT_BRSSCRPT,siebel.S_REPOSITORY where S_APPLET.REPOSITORY_ID = '" + strRepId + "'  and S_APPLET.ROW_ID = S_APLT_BRSSCRPT.APPLET_ID and S_APLT_BRSSCRPT.SCRIPT like '" + strSrch + "'";
-            OdbcDataReader dbReader = dbCmd.ExecuteReader();
-            while (dbReader.Read())
-            {
-                 resultlist.Add(new result("Applet Browser Script", dbReader[0].ToString(), dbReader[1].ToString(), "", "", ""));
-            }
-            dbReader.Close();
-            dbCmd.Dispose();
-        }
-
-        private void AppletSearchSpec(string strRepId, string strSrch)
-        {
-            OdbcCommand dbCmd = conn.CreateCommand();
-            dbCmd.CommandText = "select S_APPLET.NAME,S_APPLET.SRCHSPEC from siebel.S_APPLET where S_APPLET.REPOSITORY_ID = '"+ strRepId + "' AND S_APPLET.SRCHSPEC like '"+ strSrch + "'";
-            OdbcDataReader dbReader = dbCmd.ExecuteReader();
-            while(dbReader.Read())
-            {
-                resultlist.Add(new result("Applet Search Spec", dbReader[0].ToString(), dbReader[1].ToString(), "", "",""));
-            }
-            dbReader.Close();
-            dbCmd.Dispose();
-        }
-        private void AppletSS(string strRepId, string strSrch)
-        {
-            OdbcCommand dbCmd = conn.CreateCommand();
-            dbCmd.CommandText = "SELECT S_APPLET.NAME,S_APPL_WEBSCRPT.NAME FROM SIEBEL.S_APPLET,SIEBEL.S_APPL_WEBSCRPT,SIEBEL.S_REPOSITORY WHERE S_APPLET.REPOSITORY_ID = '"+ strRepId + "' and S_APPLET.ROW_ID = S_APPL_WEBSCRPT.APPLET_ID and S_APPL_WEBSCRPT.SCRIPT like '" + strSrch + "'";
-            OdbcDataReader dbReader = dbCmd.ExecuteReader();
-            while (dbReader.Read())
-            {
-                resultlist.Add(new result("Applet Server Script", dbReader[0].ToString(), dbReader[1].ToString(), "", "", ""));
-            }
-            dbReader.Close();
-            dbCmd.Dispose();
-        }
-        private void AppletUPV(string strRepId, string strSrch)
-        {
-            OdbcCommand dbCmd = conn.CreateCommand();
-            dbCmd.CommandText = "SELECT S_APPLET.NAME,S_APPLET_UPROP.NAME,S_APPLET_UPROP.VALUE FROM siebel.S_APPLET,siebel.S_APPLET_UPROP,siebel.S_REPOSITORY WHERE S_APPLET.REPOSITORY_ID = '" + strRepId + "' and S_APPLET.ROW_ID = S_APPLET_UPROP.APPLET_ID AND S_APPLET_UPROP.VALUE like '" + strSrch + "'";
-            OdbcDataReader dbReader = dbCmd.ExecuteReader();
-            while (dbReader.Read())
-            {
-                resultlist.Add(new result("Applet User Property Value", dbReader[0].ToString(), dbReader[1].ToString(), dbReader[2].ToString(), "", ""));
-            }
-            dbReader.Close();
-            dbCmd.Dispose();
-        }
-
         private void openSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SettingsForm SF = new SettingsForm();
