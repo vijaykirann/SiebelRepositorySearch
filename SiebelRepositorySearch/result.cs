@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BrightIdeasSoftware;
+using System;
 using System.Collections.Generic;
 
 namespace SiebelRepositorySearch
@@ -50,10 +51,5 @@ namespace SiebelRepositorySearch
             set { subobject3 = value; }
         }
         private string subobject3;
-        static internal List<result> Getresult()
-        {
-            return result.Alllist;
-        }
-        static private List<result> Alllist = new List<result>();
     }
 }

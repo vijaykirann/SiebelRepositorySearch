@@ -92,7 +92,7 @@ namespace SiebelRepositorySearch
                     conn.Close();
                     toolStripStatusLabel1.Text = "Done";
                     statusStrip1.Refresh();
-                    this.ResultListView.SetObjects(resultlist);
+                    this.ResultListView.SetObjects(resultlist);                                                    
                     this.collapseGroup();
                 }
                 catch (Exception e)
