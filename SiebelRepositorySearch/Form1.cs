@@ -92,9 +92,30 @@ namespace SiebelRepositorySearch
                     conn.Close();
                     toolStripStatusLabel1.Text = "Done";
                     statusStrip1.Refresh();
-                    this.ResultListView.SetObjects(resultlist);                                                    
+
+
+                //    foreach (OLVColumn col in this.ResultListView.Columns)
+                //    {
+                //        object GrpKey = col.GetGroupKey(this.ResultListView.Groups);
+                //        col.MakeGroupies(
+                //new object[] { "Applet Control User Property", "Applet User Property Value", "Applet Server Script", "Applet Search Spec" },
+                //new string[] { "a", "b", "c", "d", "e" },
+                //new string[] { "", "hamburger", "toast", "beef", "chef" },
+                //new string[] {
+                //    "Pay good money -- or flee the house -- rather than eat their home-cooked food",
+                //    "Offer to buy takeaway rather than risk what may appear on your plate",
+                //    "Neither spectacular nor dangerous",
+                //    "Try to visit at dinner time to wrangle an invitation to dinner",
+                //    "Do whatever is necessary to procure their services"
+                //},
+                //new string[] { "Call 911", "Phone PizzaHut", "", "Open calendar", "Check bank balance" }
+                //            );
+                //    }
+            
+                    this.ResultListView.SetObjects(resultlist);
                     this.collapseGroup();
-                }
+
+        }
                 catch (Exception e)
                 {
                     MessageBox.Show(e.Message);
@@ -107,7 +128,14 @@ namespace SiebelRepositorySearch
                 }
             }        
         }
-
+        public void HandleHotItemChanged(object sender, HotItemChangedEventArgs e)
+        {
+            if (sender == null)
+            {
+                toolStripStatusLabel1.Text = "";
+                return;
+            }
+        }
         private void collapseGroup()
         {
             for (int i = 0; i < ResultListView.OLVGroups.Count; i++)

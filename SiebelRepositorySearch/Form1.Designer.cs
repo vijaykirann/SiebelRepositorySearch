@@ -180,6 +180,7 @@
             this.ResultListView.Size = new System.Drawing.Size(589, 154);
             this.ResultListView.TabIndex = 14;
             this.ResultListView.UseCompatibleStateImageBehavior = false;
+            this.ResultListView.UseHotItem = true;
             this.ResultListView.View = System.Windows.Forms.View.Details;
             // 
             // _ObjectName
