@@ -175,7 +175,6 @@
             this.ResultListView.HeaderUsesThemes = true;
             this.ResultListView.Location = new System.Drawing.Point(0, 108);
             this.ResultListView.Name = "ResultListView";
-            this.ResultListView.ShowItemCountOnGroups = true;
             this.ResultListView.ShowItemToolTips = true;
             this.ResultListView.Size = new System.Drawing.Size(589, 154);
             this.ResultListView.TabIndex = 14;
@@ -281,7 +280,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox strSearchTyp;
-        private BrightIdeasSoftware.ObjectListView ResultListView;
         private BrightIdeasSoftware.OLVColumn ObjectName;
         private BrightIdeasSoftware.OLVColumn _Name;
         private BrightIdeasSoftware.OLVColumn _ObjectName;
@@ -291,6 +289,7 @@
         private BrightIdeasSoftware.OLVColumn _SubObject3;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        public BrightIdeasSoftware.ObjectListView ResultListView;
     }
 }
 

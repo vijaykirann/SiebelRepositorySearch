@@ -37,10 +37,11 @@ namespace SiebelRepositorySearch
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //testdata to be disabled
             TestData testdata = new TestData();
             testdata.data();
-            this.ResultListView.SetObjects(resultlist);
-            this.collapseGroup();
+            ResultListView.SetObjects(resultlist);
+            collapseGroup();
 
         }
 
@@ -114,7 +115,7 @@ namespace SiebelRepositorySearch
                     hotItemStyle.ForeColor = Color.White;
                     hotItemStyle.BackColor = Color.FromArgb(255, 64, 64, 64);
                     ResultListView.HotItemStyle = hotItemStyle;
-                    HotItemChangedEventArgs HotItemChanged = new HotItemChangedEventArgs();
+                   // HotItemChangedEventArgs HotItemChanged = new HotItemChangedEventArgs();
 
                 }
                 catch (Exception e)
@@ -139,8 +140,14 @@ namespace SiebelRepositorySearch
 
             if (e.HotGroup != null)
             {
-                this.ResultListView.Columns[0].Text = e.HotGroup.Header.ToString();
-                this.ResultListView.Columns[1].Text="TEST1";
+                DynamicHeader DynHead= new DynamicHeader();
+                var array = DynHead.DynHeader(e.HotGroup.Header.ToString());
+                this.ResultListView.Columns[0].Text = array[0];
+                this.ResultListView.Columns[1].Text = array[1];
+                this.ResultListView.Columns[2].Text = array[2];
+                this.ResultListView.Columns[3].Text = array[3];
+                this.ResultListView.Columns[4].Text = array[4];
+
                 toolStripStatusLabel1.Text = String.Format("Over group '{0}', {1}", e.HotGroup.Header, e.HotCellHitLocationEx);
             }
         }
