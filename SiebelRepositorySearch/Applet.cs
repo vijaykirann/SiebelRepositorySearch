@@ -78,7 +78,7 @@ namespace SiebelRepositorySearch
             OdbcDataReader dbReader = dbCmd.ExecuteReader();
             while (dbReader.Read())
             {
-                SiebelRepositorySearch.resultlist.Add(new result("Applet User Property Value", dbReader[0].ToString(), dbReader[1].ToString(), dbReader[2].ToString(), "", ""));
+                SiebelRepositorySearch.resultlist.Add(new result("Applet User Property", dbReader[0].ToString(), dbReader[1].ToString(), dbReader[2].ToString(), "", ""));
             }
             dbReader.Close();
             dbCmd.Dispose();
