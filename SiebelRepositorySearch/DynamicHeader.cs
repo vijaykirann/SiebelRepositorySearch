@@ -20,7 +20,7 @@ namespace SiebelRepositorySearch
                 case "Applet Search Spec": array[0] = "Applet Search Spec"; array[1] = "Applet"; array[2] = "Applet Search Spec"; array[3] = ""; array[4] = ""; break;
                 case "Applet Server Script": array[0] = "Applet Server Script"; array[1] = "Applet"; array[2] = " Server Script Method"; array[3] = ""; array[4] = ""; break;
                 case "Applet User Property": array[0] = "Applet User Property Value"; array[1] = "Applet"; array[2] = " User Property"; array[3] = "User Property Value"; array[4] = ""; break;
-
+                case "Applet List Column User Property": array[0] = "Applet List Column User Property"; array[1] = "Applet"; array[2] = "List Coloumn"; array[3] = "List Column User Property"; array[4] = "List Column User Property Value"; break;
                 default:
                     array[0] = "Default";
                     break;

@@ -52,6 +52,7 @@ namespace SiebelRepositorySearch
             else {
                 var strRepId = "";
                 string strSrch = "";
+                resultlist.Clear();
                 try
                 {
                     Applet Aplt = new Applet();
@@ -104,6 +105,12 @@ namespace SiebelRepositorySearch
                         statusStrip1.Refresh();
                         Aplt.AppletDDDV(strRepId, strSrch);
                     }
+                    if (Properties.Settings.Default.AppletLCUP == true)
+                    {
+                        toolStripStatusLabel1.Text = "Applet List Column User Prop";
+                        statusStrip1.Refresh();
+                        Aplt.AppletLCUP(strRepId, strSrch);
+                    }
                     //Closing Events from here//
                     conn.Close();
                     toolStripStatusLabel1.Text = "Done";
@@ -148,7 +155,7 @@ namespace SiebelRepositorySearch
                 this.ResultListView.Columns[3].Text = array[3];
                 this.ResultListView.Columns[4].Text = array[4];
 
-                toolStripStatusLabel1.Text = String.Format("Over group '{0}', {1}", e.HotGroup.Header, e.HotCellHitLocationEx);
+              //  toolStripStatusLabel1.Text = String.Format("Over group '{0}', {1}", e.HotGroup.Header, e.HotCellHitLocationEx);
             }
         }
         private void collapseGroup()
