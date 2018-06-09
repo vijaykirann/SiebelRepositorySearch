@@ -111,6 +111,12 @@ namespace SiebelRepositorySearch
                         statusStrip1.Refresh();
                         Aplt.AppletLCUP(strRepId, strSrch);
                     }
+                    if (Properties.Settings.Default.AppletLCUPV == true)
+                    {
+                        toolStripStatusLabel1.Text = "Applet List Column User Prop Value";
+                        statusStrip1.Refresh();
+                        Aplt.AppletLCUPV(strRepId, strSrch);
+                    }
                     //Closing Events from here//
                     conn.Close();
                     toolStripStatusLabel1.Text = "Done";

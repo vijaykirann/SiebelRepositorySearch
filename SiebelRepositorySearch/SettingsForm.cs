@@ -28,6 +28,7 @@ namespace SiebelRepositorySearch
             AppletCUP.Checked = Properties.Settings.Default.AppletCUP;
             AppletDDDV.Checked = Properties.Settings.Default.AppletDDDV;
             AppletLCUP.Checked = Properties.Settings.Default.AppletLCUP;
+            AppletLCUPV.Checked = Properties.Settings.Default.AppletLCUPV;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -50,6 +51,7 @@ namespace SiebelRepositorySearch
             Properties.Settings.Default.AppletCUP = AppletCUP.Checked;
             Properties.Settings.Default.AppletDDDV = AppletDDDV.Checked;
             Properties.Settings.Default.AppletLCUP = AppletLCUP.Checked;
+            Properties.Settings.Default.AppletLCUPV = AppletLCUPV.Checked;
             Properties.Settings.Default.Save();
             Close();
         }

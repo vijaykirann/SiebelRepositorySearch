@@ -95,5 +95,17 @@ namespace SiebelRepositorySearch
             dbReader.Close();
             dbCmd.Dispose();
         }
+        internal void AppletLCUPV(string strRepId, string strSrch)
+        {
+            OdbcCommand dbCmd = SiebelRepositorySearch.conn.CreateCommand();
+            dbCmd.CommandText = "select S_APPLET.NAME,S_LIST_COLUMN.NAME,S_LISTCOL_UPROP.NAME,S_LISTCOL_UPROP.VALUE from siebel.S_APPLET,siebel.S_LIST,siebel.S_LIST_COLUMN,siebel.S_LISTCOL_UPROP,siebel.S_REPOSITORY where S_APPLET.REPOSITORY_ID='" + strRepId + "' and S_APPLET.ROW_ID=S_LIST.APPLET_ID and S_LIST.ROW_ID=S_LIST_COLUMN.LIST_ID and S_LIST_COLUMN.ROW_ID=S_LISTCOL_UPROP.LIST_COLUMN_ID and S_LISTCOL_UPROP.VALUE like '" + strSrch + "'";
+            OdbcDataReader dbReader = dbCmd.ExecuteReader();
+            while (dbReader.Read())
+            {
+                SiebelRepositorySearch.resultlist.Add(new result("Applet List Column User Property Value", dbReader[0].ToString(), dbReader[1].ToString(), dbReader[2].ToString(), dbReader[3].ToString(), ""));
+            }
+            dbReader.Close();
+            dbCmd.Dispose();
+        }
     }
 }
