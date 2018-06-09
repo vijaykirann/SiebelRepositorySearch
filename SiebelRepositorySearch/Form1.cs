@@ -56,6 +56,7 @@ namespace SiebelRepositorySearch
                 try
                 {
                     Applet Aplt = new Applet();
+                    Appl Appl = new Appl();
                     var txtCN = Properties.Settings.Default.ConnectString;
                     var txtUN = Properties.Settings.Default.Usr;
                     var txtPW = Properties.Settings.Default.Pwd;
@@ -116,6 +117,24 @@ namespace SiebelRepositorySearch
                         toolStripStatusLabel1.Text = "Applet List Column User Prop Value";
                         statusStrip1.Refresh();
                         Aplt.AppletLCUPV(strRepId, strSrch);
+                    }
+                    if (Properties.Settings.Default.AppletWTI == true)
+                    {
+                        toolStripStatusLabel1.Text = "Applet Web Template Item";
+                        statusStrip1.Refresh();
+                        Aplt.AppletWTI(strRepId, strSrch);
+                    }
+                    if (Properties.Settings.Default.ApplBS == true)
+                    {
+                        toolStripStatusLabel1.Text = "Application Browser Script";
+                        statusStrip1.Refresh();
+                        Appl.ApplBS(strRepId, strSrch);
+                    }
+                    if (Properties.Settings.Default.ApplSS == true)
+                    {
+                        toolStripStatusLabel1.Text = "Application Server Script";
+                        statusStrip1.Refresh();
+                        Appl.ApplSS(strRepId, strSrch);
                     }
                     //Closing Events from here//
                     conn.Close();
@@ -179,6 +198,11 @@ namespace SiebelRepositorySearch
         }
 
         private void settingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
         }

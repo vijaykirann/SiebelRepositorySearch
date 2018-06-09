@@ -47,6 +47,9 @@
             this.AppletDDDV = new System.Windows.Forms.CheckBox();
             this.AppletLCUP = new System.Windows.Forms.CheckBox();
             this.AppletLCUPV = new System.Windows.Forms.CheckBox();
+            this.AppletWTI = new System.Windows.Forms.CheckBox();
+            this.ApplBS = new System.Windows.Forms.CheckBox();
+            this.ApplSS = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -237,11 +240,44 @@
             this.AppletLCUPV.Text = "List Col User Prop Value";
             this.AppletLCUPV.UseVisualStyleBackColor = true;
             // 
+            // AppletWTI
+            // 
+            this.AppletWTI.AutoSize = true;
+            this.AppletWTI.Location = new System.Drawing.Point(12, 215);
+            this.AppletWTI.Name = "AppletWTI";
+            this.AppletWTI.Size = new System.Drawing.Size(131, 17);
+            this.AppletWTI.TabIndex = 20;
+            this.AppletWTI.Text = "Applet Web Tmpl Item";
+            this.AppletWTI.UseVisualStyleBackColor = true;
+            // 
+            // ApplBS
+            // 
+            this.ApplBS.AutoSize = true;
+            this.ApplBS.Location = new System.Drawing.Point(13, 239);
+            this.ApplBS.Name = "ApplBS";
+            this.ApplBS.Size = new System.Drawing.Size(149, 17);
+            this.ApplBS.TabIndex = 21;
+            this.ApplBS.Text = "Application Browser Script";
+            this.ApplBS.UseVisualStyleBackColor = true;
+            // 
+            // ApplSS
+            // 
+            this.ApplSS.AutoSize = true;
+            this.ApplSS.Location = new System.Drawing.Point(153, 239);
+            this.ApplSS.Name = "ApplSS";
+            this.ApplSS.Size = new System.Drawing.Size(142, 17);
+            this.ApplSS.TabIndex = 22;
+            this.ApplSS.Text = "Application Server Script";
+            this.ApplSS.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 298);
+            this.Controls.Add(this.ApplSS);
+            this.Controls.Add(this.ApplBS);
+            this.Controls.Add(this.AppletWTI);
             this.Controls.Add(this.AppletLCUPV);
             this.Controls.Add(this.AppletLCUP);
             this.Controls.Add(this.AppletDDDV);
@@ -281,5 +317,8 @@
         private System.Windows.Forms.CheckBox AppletDDDV;
         private System.Windows.Forms.CheckBox AppletLCUP;
         private System.Windows.Forms.CheckBox AppletLCUPV;
+        private System.Windows.Forms.CheckBox AppletWTI;
+        private System.Windows.Forms.CheckBox ApplBS;
+        private System.Windows.Forms.CheckBox ApplSS;
     }
 }

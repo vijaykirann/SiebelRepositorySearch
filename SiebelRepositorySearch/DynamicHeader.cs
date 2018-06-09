@@ -22,6 +22,9 @@ namespace SiebelRepositorySearch
                 case "Applet User Property": array[0] = "Applet User Property Value"; array[1] = "Applet"; array[2] = " User Property"; array[3] = "User Property Value"; array[4] = ""; break;
                 case "Applet List Column User Property": array[0] = "Applet List Column User Property"; array[1] = "Applet"; array[2] = "List Coloumn"; array[3] = "List Column User Property"; array[4] = "List Column User Property Value"; break;
                 case "Applet List Column User Property Value": array[0] = "Applet List Column User Property Value"; array[1] = "Applet"; array[2] = "List Coloumn"; array[3] = "List Column User Property"; array[4] = "List Column User Property Value"; break;
+                case "Applet Web Template Item": array[0] = "Applet Web Template Item"; array[1] = "Applet"; array[2] = "Web Template Name"; array[3] = "Web Template Item Name"; array[4] = "Web Template Item Expression"; break;
+                case "Application Browser Script": array[0] = "Application Browser Script"; array[1] = "Application Name"; array[2] = "Browser Script Name"; array[3] = "Browser Script"; array[4] = ""; break;
+                case "Application Server Script": array[0] = "Application Server Script"; array[1] = "Application Name"; array[2] = "Server Script Name"; array[3] = "Server Script"; array[4] = ""; break;
                 default:
                     array[0] = "Default";
                     break;

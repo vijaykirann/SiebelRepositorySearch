@@ -178,5 +178,41 @@ namespace SiebelRepositorySearch.Properties {
                 this["AppletLCUPV"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AppletWTI {
+            get {
+                return ((bool)(this["AppletWTI"]));
+            }
+            set {
+                this["AppletWTI"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ApplBS {
+            get {
+                return ((bool)(this["ApplBS"]));
+            }
+            set {
+                this["ApplBS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ApplSS {
+            get {
+                return ((bool)(this["ApplSS"]));
+            }
+            set {
+                this["ApplSS"] = value;
+            }
+        }
     }
 }

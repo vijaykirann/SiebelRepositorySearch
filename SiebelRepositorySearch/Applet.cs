@@ -107,5 +107,17 @@ namespace SiebelRepositorySearch
             dbReader.Close();
             dbCmd.Dispose();
         }
+        internal void AppletWTI(string strRepId, string strSrch)
+        {
+            OdbcCommand dbCmd = SiebelRepositorySearch.conn.CreateCommand();
+            dbCmd.CommandText = "select S_APPLET.NAME,S_APPL_WEB_TMPL.NAME,S_APPL_WTMPL_IT.NAME,S_APPL_WTMPL_IT.EXPR from siebel.S_APPLET,siebel.S_APPL_WEB_TMPL,siebel.S_APPL_WTMPL_IT,siebel.S_REPOSITORY where S_APPLET.REPOSITORY_ID='" + strRepId + "'  and S_APPLET.ROW_ID=S_APPL_WEB_TMPL.APPLET_ID and S_APPL_WEB_TMPL.ROW_ID=S_APPL_WTMPL_IT.APPL_WEB_TMPL_ID AND (S_APPL_WTMPL_IT.NAME like '" + strSrch + "' OR S_APPL_WTMPL_IT.EXPR like '" + strSrch + "')";
+            OdbcDataReader dbReader = dbCmd.ExecuteReader();
+            while (dbReader.Read())
+            {
+                SiebelRepositorySearch.resultlist.Add(new result("Applet Web Template Item", dbReader[0].ToString(), dbReader[1].ToString(), dbReader[2].ToString(), dbReader[3].ToString(), ""));
+            }
+            dbReader.Close();
+            dbCmd.Dispose();
+        }
     }
 }
